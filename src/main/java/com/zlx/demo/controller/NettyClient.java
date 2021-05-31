@@ -1,5 +1,8 @@
 package com.zlx.demo.controller;
 
+
+
+
 public class NettyClient {
 
     public void run(String host,int port){
@@ -7,6 +10,7 @@ public class NettyClient {
         EventLoopGroup group=new NioEventLoopGroup();
         try {
             //客户端启动类
+            Bootstrap
         }
     }
 }
