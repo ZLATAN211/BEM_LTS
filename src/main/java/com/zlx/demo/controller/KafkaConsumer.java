@@ -1,6 +1,8 @@
 package com.zlx.demo.controller;
 
 
+import org.springframework.kafka.annotation.KafkaListener;
+
 public class KafkaConsumer {
 
     //消费监听
