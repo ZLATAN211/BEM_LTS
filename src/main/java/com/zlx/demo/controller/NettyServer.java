@@ -3,6 +3,8 @@ package com.zlx.demo.controller;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 
+import java.util.ArrayList;
+
 public class NettyServer {
 
     public static void main(String[] args) {
@@ -14,6 +16,10 @@ public class NettyServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
+            /*
+            bootstrap用来为Netty启动配置一些必要组件，
+             */
+
 
         }
     }
