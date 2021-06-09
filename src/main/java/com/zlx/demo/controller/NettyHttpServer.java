@@ -1,6 +1,7 @@
 package com.zlx.demo.controller;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -28,6 +29,21 @@ public class NettyHttpServer {
             bootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new NettyHttpServerInitializer());
+
+            /*
+            bootstrap的bind方法将服务绑定在8080端口，bind方法内部会执行端口绑定等一系列的操作，使前面的配置各司其职
+            加锁--->同步
+             */
+            ChannelFuture future=bootstrap.bind(8080).sync();
+
+            //等待服务器关闭
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            //退出，释放线程池资源
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
     }
 }
