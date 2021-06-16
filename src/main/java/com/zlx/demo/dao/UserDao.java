@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
-    @Insert("insert into User(uuid,id,url,tem) value(#{uuid},#{id},#{url},#{tme})")
+    @Insert("insert into User(id,url,tem) value(#{id},#{url},#{tme})")
     int insertUser(User User);
 
     @Select("select*from User wherer id=#{id} and url=#{url} and tme=#{tme}")
